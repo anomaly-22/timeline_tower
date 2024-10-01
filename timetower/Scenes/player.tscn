@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://bl1kf1abmwsey"]
+
+[ext_resource type="Script" path="res://Scripts/PlayerController.gd" id="1_p2pke"]
+[ext_resource type="Texture2D" uid="uid://bpe4hq1c0xrbt" path="res://Sprites/placeholder_player.png" id="2_3qigr"]
+[ext_resource type="PackedScene" uid="uid://b2pjvg0625xc2" path="res://Scenes/shader+camara.tscn" id="3_0uq6j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1fxgi"]
+size = Vector2(54.5, 80)
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+script = ExtResource("1_p2pke")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1.6875, -8.96875)
+texture = ExtResource("2_3qigr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.75, -9)
+shape = SubResource("RectangleShape2D_1fxgi")
+
+[node name="shader" parent="." instance=ExtResource("3_0uq6j")]
+position = Vector2(-640, -382)

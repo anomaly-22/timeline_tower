@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dnvc0v0c5ns0o"]
+
+[ext_resource type="Script" path="res://Scripts/BASE_disappearing_obj.gd" id="1_6x64t"]
+[ext_resource type="Texture2D" uid="uid://4gykl5mf4s2g" path="res://Sprites/vase_future.png" id="2_n2rsv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qtamn"]
+size = Vector2(20, 15)
+
+[node name="DisappearingObj" type="Node2D" node_paths=PackedStringArray("collision", "obj_sprite")]
+script = ExtResource("1_6x64t")
+collision = NodePath("StaticBody2D/CollisionShape2D")
+obj_sprite = NodePath("StaticBody2D/Sprite2D")
+object_in_future = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+texture_filter = 1
+texture = ExtResource("2_n2rsv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 3.5)
+shape = SubResource("RectangleShape2D_qtamn")

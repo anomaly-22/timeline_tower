@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ds778r313aa1o"]
+
+[ext_resource type="Script" path="res://Scripts/time_logic.gd" id="1_j3ra5"]
+
+[node name="Logic" type="Node2D"]
+script = ExtResource("1_j3ra5")

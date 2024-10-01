@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://reux0ijx30tj"]
+
+[ext_resource type="PackedScene" uid="uid://bl1kf1abmwsey" path="res://Scenes/player.tscn" id="1_od7i6"]
+[ext_resource type="PackedScene" uid="uid://bogpnra7reui3" path="res://Scenes/BASE_shifting_object.tscn" id="2_bdrpx"]
+[ext_resource type="PackedScene" uid="uid://dnvc0v0c5ns0o" path="res://Scenes/BASE_disappearingobject.tscn" id="3_211mm"]
+[ext_resource type="Texture2D" uid="uid://rrbhx7ld1lkb" path="res://Sprites/testcube.png" id="4_no6v8"]
+[ext_resource type="PackedScene" uid="uid://b2pjvg0625xc2" path="res://Scenes/shader+camara.tscn" id="5_6qcfo"]
+
+[node name="Main" type="Node2D"]
+
+[node name="level" parent="." instance=ExtResource("5_6qcfo")]
+visible = false
+
+[node name="Player" parent="." instance=ExtResource("1_od7i6")]
+position = Vector2(429, 96)
+
+[node name="ShiftingObject" parent="." instance=ExtResource("2_bdrpx")]
+position = Vector2(431, 241)
+scale = Vector2(3, 3)
+
+[node name="DisappearingObj" parent="." instance=ExtResource("3_211mm")]
+position = Vector2(264, 292)
+scale = Vector2(3, 3)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(535, 171)
+texture = ExtResource("4_no6v8")

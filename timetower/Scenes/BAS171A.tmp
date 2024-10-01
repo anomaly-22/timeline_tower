@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://bwcojbmcsagwu"]
+
+[ext_resource type="Script" path="res://Scripts/BASE_shifting_obj.gd" id="1_dav1j"]
+[ext_resource type="Texture2D" uid="uid://4gykl5mf4s2g" path="res://Sprites/vase_future.png" id="2_o4k5d"]
+[ext_resource type="Texture2D" uid="uid://dtwdxqy11s073" path="res://Sprites/vase_past.png" id="3_vism7"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6wvrk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_o4k5d")
+}],
+"loop": true,
+"name": &"future",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_vism7")
+}],
+"loop": true,
+"name": &"past",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u4ejd"]
+size = Vector2(20, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f18fc"]
+size = Vector2(20, 10)
+
+[node name="ShiftingObject" type="Node2D" node_paths=PackedStringArray("past_collision", "future_collision")]
+script = ExtResource("1_dav1j")
+object_in_past = null
+object_in_future = null
+past_collision = NodePath("StaticBody2D/past collision")
+future_collision = NodePath("StaticBody2D/future collision")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="StaticBody2D"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_6wvrk")
+animation = &"future"
+
+[node name="past collision" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_u4ejd")
+
+[node name="future collision" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_f18fc")

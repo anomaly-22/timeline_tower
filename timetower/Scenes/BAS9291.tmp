@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://b2pjvg0625xc2"]
+
+[ext_resource type="Shader" path="res://Scenes/cold_shader.gdshader" id="1_5qp4n"]
+[ext_resource type="Shader" path="res://Scenes/warm_shader.gdshader" id="1_8ccdj"]
+[ext_resource type="Texture2D" uid="uid://dtwdxqy11s073" path="res://Sprites/vase_past.png" id="2_syksw"]
+[ext_resource type="Script" path="res://Scripts/SetShader.gd" id="3_a0blu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ydxr1"]
+shader = ExtResource("1_5qp4n")
+shader_parameter/black = Vector4(0, 0, 0, 1)
+shader_parameter/white = Vector4(1, 1, 1, 1)
+shader_parameter/lightcolor = Vector4(0.87, 0.74, 0.8, 1)
+shader_parameter/darkcolor = Vector4(0.19, 0.176, 0.28, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s55tr"]
+shader = ExtResource("1_8ccdj")
+shader_parameter/black = Vector4(0, 0, 0, 1)
+shader_parameter/white = Vector4(1, 1, 1, 1)
+shader_parameter/lightcolor = Vector4(0.84, 0.7, 0.6, 1)
+shader_parameter/darkcolor = Vector4(0.33, 0.12, 0, 1)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+
+[node name="test subject" type="ColorRect" parent="Camera2D/CanvasLayer"]
+material = SubResource("ShaderMaterial_ydxr1")
+offset_right = 666.0
+offset_bottom = 648.0
+
+[node name="hot" type="ColorRect" parent="Camera2D/CanvasLayer"]
+material = SubResource("ShaderMaterial_s55tr")
+offset_left = 633.0
+offset_top = -14.0
+offset_right = 1159.0
+offset_bottom = 648.0
+script = ExtResource("3_a0blu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(611, 281)
+scale = Vector2(10.1875, 9.45452)
+texture = ExtResource("2_syksw")
